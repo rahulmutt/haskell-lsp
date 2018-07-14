@@ -1,4 +1,3 @@
-{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
@@ -50,7 +49,7 @@ type DiagnosticsBySource = Map.Map (Maybe J.DiagnosticSource) (SL.SortedList J.D
 -- ---------------------------------------------------------------------
 
 partitionBySource :: [J.Diagnostic] -> DiagnosticsBySource
-partitionBySource diags = Map.fromListWith mappend $ map (\d -> (J._source d, (SL.singleton d))) diags
+partitionBySource diags = Map.fromListWith mappend $ map (\d -> (J._dsSource d, (SL.singleton d))) diags
 
 -- ---------------------------------------------------------------------
 

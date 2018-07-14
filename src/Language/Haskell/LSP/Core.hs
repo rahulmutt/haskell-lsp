@@ -553,26 +553,26 @@ initializeRequestHandler' (_configHandler,dispatcherProc) mHandler tvarCtx req@(
 
           capa =
             J.InitializeResponseCapabilitiesInner
-              { J._textDocumentSync                 = sync
-              , J._hoverProvider                    = supported (hoverHandler h)
-              , J._completionProvider               = completionProvider o
-              , J._signatureHelpProvider            = signatureHelpProvider o
-              , J._definitionProvider               = supported (definitionHandler h)
-              , J._referencesProvider               = supported (referencesHandler h)
-              , J._documentHighlightProvider        = supported (documentHighlightHandler h)
+              { J._irciTextDocumentSync                 = sync
+              , J._irciHoverProvider                    = supported (hoverHandler h)
+              , J._irciCompletionProvider               = completionProvider o
+              , J._irciSignatureHelpProvider            = signatureHelpProvider o
+              , J._irciDefinitionProvider               = supported (definitionHandler h)
+              , J._irciReferencesProvider               = supported (referencesHandler h)
+              , J._irciDocumentHighlightProvider        = supported (documentHighlightHandler h)
 
-              , J._documentSymbolProvider           = supported (documentSymbolHandler h)
-              , J._workspaceSymbolProvider          = supported (workspaceSymbolHandler h)
-              , J._codeActionProvider               = supported (codeActionHandler h)
-              , J._codeLensProvider                 = codeLensProvider o
-              , J._documentFormattingProvider       = supported (documentFormattingHandler h)
-              , J._documentRangeFormattingProvider  = supported (documentRangeFormattingHandler h)
-              , J._documentOnTypeFormattingProvider = documentOnTypeFormattingProvider o
-              , J._renameProvider                   = supported (renameHandler h)
-              , J._documentLinkProvider             = documentLinkProvider o
-              , J._executeCommandProvider           = executeCommandProvider o
+              , J._irciDocumentSymbolProvider           = supported (documentSymbolHandler h)
+              , J._irciWorkspaceSymbolProvider          = supported (workspaceSymbolHandler h)
+              , J._irciCodeActionProvider               = supported (codeActionHandler h)
+              , J._irciCodeLensProvider                 = codeLensProvider o
+              , J._irciDocumentFormattingProvider       = supported (documentFormattingHandler h)
+              , J._irciDocumentRangeFormattingProvider  = supported (documentRangeFormattingHandler h)
+              , J._irciDocumentOnTypeFormattingProvider = documentOnTypeFormattingProvider o
+              , J._irciRenameProvider                   = supported (renameHandler h)
+              , J._irciDocumentLinkProvider             = documentLinkProvider o
+              , J._irciExecuteCommandProvider           = executeCommandProvider o
               -- TODO: Add something for experimental
-              , J._experimental                     = Nothing :: Maybe J.Value
+              , J._irciExperimental                     = Nothing :: Maybe J.Value
               }
 
           -- TODO: wrap this up into a fn to create a response message

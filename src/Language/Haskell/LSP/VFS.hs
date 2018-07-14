@@ -1,5 +1,4 @@
 {-# LANGUAGE CPP #-}
-{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -30,7 +29,6 @@ import           Data.Text ( Text )
 import           Data.List
 import           Data.Ord
 #if __GLASGOW_HASKELL__ < 804
-import           Data.Monoid
 #endif
 import qualified Data.HashMap.Strict as HashMap
 import qualified Data.Map as Map
@@ -47,8 +45,8 @@ import           Language.Haskell.LSP.Utility
 
 data VirtualFile =
   VirtualFile {
-      _version :: Int
-    , _text    :: Rope
+      _vfVersion :: Int
+    , _vfText    :: Rope
     } deriving (Show)
 
 type VFS = Map.Map J.Uri VirtualFile
@@ -106,7 +104,7 @@ changeFromServerVFS initVfs (J.RequestMessage _ _ _ params) = do
           ps = J.DidChangeTextDocumentParams vid (J.List changeEvents)
           notif = J.NotificationMessage "" J.TextDocumentDidChange ps
       changeFromClientVFS vfs notif
-  
+
     editToChangeEvent (J.TextEdit range text) = J.TextDocumentContentChangeEvent (Just range) Nothing text
 
 -- ---------------------------------------------------------------------
