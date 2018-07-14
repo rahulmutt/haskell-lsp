@@ -1,0 +1,18 @@
+resolver: lts-6.27
+
+packages:
+- '.'
+- ./haskell-lsp-types
+flags: {}
+extra-package-dbs: []
+extra-deps:
+- aeson-1.4.0.0
+- lens-4.16.1
+- git: https://github.com/rahulmutt/rope-utf16-splay.git
+  commit: 6ff90a73f1f0f39f15e1a2cd619f87a62611a5d7
+- sorted-list-0.2.1.0
+- cabal-doctest-1.0.6
+- kan-extensions-5.1
+- profunctors-5.2.2
+- text-1.2.3.0
+- th-abstraction-0.2.7.0
