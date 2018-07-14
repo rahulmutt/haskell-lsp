@@ -326,11 +326,11 @@ sendDiagnostics fileUri version = do
 
 syncOptions :: J.TextDocumentSyncOptions
 syncOptions = J.TextDocumentSyncOptions
-  { J._openClose         = Just True
-  , J._change            = Just J.TdSyncIncremental
-  , J._willSave          = Just False
-  , J._willSaveWaitUntil = Just False
-  , J._save              = Just $ J.SaveOptions $ Just False
+  { J._tdsoOpenClose         = Just True
+  , J._tdsoChange            = Just J.TdSyncIncremental
+  , J._tdsoWillSave          = Just False
+  , J._tdsoWillSaveWaitUntil = Just False
+  , J._tdsoSave              = Just $ J.SaveOptions $ Just False
   }
 
 lspOptions :: Core.Options
