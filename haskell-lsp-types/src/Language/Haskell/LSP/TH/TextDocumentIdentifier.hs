@@ -1,4 +1,3 @@
-{-# LANGUAGE DuplicateRecordFields      #-}
 {-# LANGUAGE TemplateHaskell            #-}
 module Language.Haskell.LSP.TH.TextDocumentIdentifier where
 

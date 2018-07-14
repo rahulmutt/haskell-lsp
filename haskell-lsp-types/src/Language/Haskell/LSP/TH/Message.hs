@@ -1,4 +1,3 @@
-{-# LANGUAGE DuplicateRecordFields      #-}
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE TemplateHaskell            #-}
 module Language.Haskell.LSP.TH.Message where

@@ -1,7 +1,9 @@
-
 module Language.Haskell.LSP.TH.Constants where
 
+import           Data.Char
 import           Data.Aeson.TH
+import           Control.Lens.TH (makeLensesWith, abbreviatedFields)
+import           Language.Haskell.TH
 
 -- ---------------------------------------------------------------------
 
@@ -10,8 +12,13 @@ lspOptions :: Options
 lspOptions = defaultOptions { omitNothingFields = True, fieldLabelModifier = defaultModifier }
  -- NOTE: This needs to be in a separate file because of the TH stage restriction
 
+makeFieldsNoPrefix :: Name -> DecsQ
+makeFieldsNoPrefix = makeLensesWith abbreviatedFields
+
 defaultModifier :: String -> String
-defaultModifier = drop 1 . dropWhile (/= '_')
+defaultModifier str = f (dropWhile (not . isUpper) str)
+  where f (x:xs) = toLower x : xs
+        f [] = []
 
 customModifier :: String -> String
 customModifier xs =
@@ -19,4 +26,3 @@ customModifier xs =
     "xdata" -> "data"
     "xtype" -> "type"
     xs'     -> xs'
-

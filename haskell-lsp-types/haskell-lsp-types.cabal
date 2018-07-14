@@ -43,6 +43,7 @@ library
                      , hashable
                      , lens >= 4.15.2
                      , network-uri
+                     , template-haskell
                      , text
                      , unordered-containers
   hs-source-dirs:      src
