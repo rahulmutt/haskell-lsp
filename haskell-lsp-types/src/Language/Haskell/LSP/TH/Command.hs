@@ -36,9 +36,9 @@ interface Command {
 
 data Command =
   Command
-    { _title     :: Text
-    , _command   :: Text
-    , _arguments :: Maybe Value
+    { _cTitle     :: Text
+    , _cCommand   :: Text
+    , _cArguments :: Maybe Value
     } deriving (Show, Read, Eq)
 
 deriveJSON lspOptions ''Command

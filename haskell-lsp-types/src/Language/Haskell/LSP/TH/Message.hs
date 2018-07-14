@@ -61,7 +61,7 @@ responseId :: LspId -> LspIdRsp
 responseId (IdInt    i) = IdRspInt i
 responseId (IdString s) = IdRspString s
 
--- | Converts an LspIdRsp to its LspId counterpart. 
+-- | Converts an LspIdRsp to its LspId counterpart.
 requestId :: LspIdRsp -> LspId
 requestId (IdRspInt    i) = IdInt i
 requestId (IdRspString s) = IdString s
@@ -204,7 +204,7 @@ data ServerMethod =
   -- Document
   | TextDocumentPublishDiagnostics
   -- Cancelling
-  | CancelRequestServer  
+  | CancelRequestServer
    deriving (Eq,Ord,Read,Show)
 
 instance A.FromJSON ServerMethod where
@@ -242,10 +242,10 @@ instance A.ToJSON ServerMethod where
 
 data RequestMessage m req resp =
   RequestMessage
-    { _jsonrpc :: Text
-    , _id      :: LspId
-    , _method  :: m
-    , _params  :: req
+    { _reqmJsonrpc :: Text
+    , _reqmId      :: LspId
+    , _rmMethod  :: m
+    , _rmParams  :: req
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions ''RequestMessage
@@ -329,9 +329,9 @@ instance A.FromJSON ErrorCode where
 
 data ResponseError =
   ResponseError
-    { _code    :: ErrorCode
-    , _message :: Text
-    , _xdata   :: Maybe A.Value
+    { _reCode    :: ErrorCode
+    , _reMessage :: Text
+    , _reXdata   :: Maybe A.Value
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions{ fieldLabelModifier = customModifier } ''ResponseError
@@ -340,10 +340,10 @@ deriveJSON lspOptions{ fieldLabelModifier = customModifier } ''ResponseError
 
 data ResponseMessage a =
   ResponseMessage
-    { _jsonrpc :: Text
-    , _id      :: LspIdRsp
-    , _result  :: Maybe a
-    , _error   :: Maybe ResponseError
+    { _resmJsonrpc :: Text
+    , _resmId      :: LspIdRsp
+    , _rmResult  :: Maybe a
+    , _rmError   :: Maybe ResponseError
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions ''ResponseMessage
@@ -368,9 +368,9 @@ starting with '$/' it is free to ignore them if they are unknown.
 
 data NotificationMessage m a =
   NotificationMessage
-    { _jsonrpc :: Text
-    , _method  :: m
-    , _params  :: a
+    { _nmJsonrpc :: Text
+    , _nmMethod  :: m
+    , _nmParams  :: a
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions ''NotificationMessage
@@ -405,7 +405,7 @@ it allows for returning partial results on cancel.
 
 data CancelParams =
   CancelParams
-    { _id :: LspId
+    { _cpId :: LspId
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions ''CancelParams

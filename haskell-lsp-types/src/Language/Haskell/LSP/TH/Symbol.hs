@@ -98,7 +98,7 @@ Registration Options: TextDocumentRegistrationOptions
 
 data DocumentSymbolParams =
   DocumentSymbolParams
-    { _textDocument :: TextDocumentIdentifier
+    { _dspTextDocument :: TextDocumentIdentifier
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions ''DocumentSymbolParams
@@ -172,10 +172,10 @@ instance FromJSON SymbolKind where
 
 data SymbolInformation =
   SymbolInformation
-    { _name          :: Text
-    , _kind          :: SymbolKind
-    , _location      :: Location
-    , _containerName :: Maybe Text -- ^The name of the symbol containing this
+    { _siName          :: Text
+    , _siKind          :: SymbolKind
+    , _siLocation      :: Location
+    , _siContainerName :: Maybe Text -- ^The name of the symbol containing this
                                      -- symbol.
     } deriving (Read,Show,Eq)
 

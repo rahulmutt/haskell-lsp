@@ -243,8 +243,8 @@ instance FromJSON CodeActionKind where
 
 data CodeActionContext =
   CodeActionContext
-    { _diagnostics :: List Diagnostic
-    , only         :: Maybe (List CodeActionKind)
+    { _cacDiagnostics :: List Diagnostic
+    , cacOnly         :: Maybe (List CodeActionKind)
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions ''CodeActionContext
@@ -252,9 +252,9 @@ deriveJSON lspOptions ''CodeActionContext
 
 data CodeActionParams =
   CodeActionParams
-    { _textDocument :: TextDocumentIdentifier
-    , _range        :: Range
-    , _context      :: CodeActionContext
+    { _capTextDocument :: TextDocumentIdentifier
+    , _capRange        :: Range
+    , _capContext      :: CodeActionContext
     } deriving (Read,Show,Eq)
 
 deriveJSON lspOptions ''CodeActionParams
@@ -266,11 +266,11 @@ data CodeAction =
   -- A CodeAction must set either '_edit' and/or a '_command'. If both are supplied,
   -- the '_edit' is applied first, then the '_command' is executed.
   CodeAction
-    { _title       :: Text -- ^ A short, human-readable, title for this code action.
-    , _kind        :: Maybe CodeActionKind -- ^ The kind of the code action. Used to filter code actions.
-    , _diagnostics :: Maybe (List Diagnostic) -- ^ The diagnostics that this code action resolves.
-    , _edit        :: Maybe WorkspaceEdit -- ^ The workspace edit this code action performs.
-    , _command     :: Maybe Command -- ^ A command this code action executes. If a code action
+    { _caTitle       :: Text -- ^ A short, human-readable, title for this code action.
+    , _caKind        :: Maybe CodeActionKind -- ^ The kind of the code action. Used to filter code actions.
+    , _caDiagnostics :: Maybe (List Diagnostic) -- ^ The diagnostics that this code action resolves.
+    , _caEdit        :: Maybe WorkspaceEdit -- ^ The workspace edit this code action performs.
+    , _caCommand     :: Maybe Command -- ^ A command this code action executes. If a code action
                                     -- provides an edit and a command, first the edit is
                                     -- executed and then the command.
     } deriving (Read,Show,Eq)

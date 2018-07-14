@@ -39,8 +39,8 @@ interface TextEdit {
 
 data TextEdit =
   TextEdit
-    { _range   :: Range
-    , _newText :: Text
+    { _teRange   :: Range
+    , _teNewText :: Text
     } deriving (Show,Read,Eq)
 
 deriveJSON lspOptions ''TextEdit
@@ -68,8 +68,8 @@ type TextDocumentVersion = Maybe Int
 
 data VersionedTextDocumentIdentifier =
   VersionedTextDocumentIdentifier
-    { _uri     :: Uri
-    , _version :: TextDocumentVersion
+    { _vtdiUri     :: Uri
+    , _vtdiVersion :: TextDocumentVersion
     } deriving (Show, Read, Eq)
 
 deriveJSON lspOptions ''VersionedTextDocumentIdentifier
@@ -103,8 +103,8 @@ export interface TextDocumentEdit {
 
 data TextDocumentEdit =
   TextDocumentEdit
-    { _textDocument :: VersionedTextDocumentIdentifier
-    , _edits        :: List TextEdit
+    { _tdeTextDocument :: VersionedTextDocumentIdentifier
+    , _tdeEdits        :: List TextEdit
     } deriving (Show, Read, Eq)
 
 deriveJSON lspOptions ''TextDocumentEdit
@@ -143,8 +143,8 @@ type WorkspaceEditMap = H.HashMap Uri (List TextEdit)
 
 data WorkspaceEdit =
   WorkspaceEdit
-    { _changes         :: Maybe WorkspaceEditMap
-    , _documentChanges :: Maybe (List TextDocumentEdit)
+    { _weChanges         :: Maybe WorkspaceEditMap
+    , _weDocumentChanges :: Maybe (List TextDocumentEdit)
     } deriving (Show, Read, Eq)
 
 instance Monoid WorkspaceEdit where

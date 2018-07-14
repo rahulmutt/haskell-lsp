@@ -23,7 +23,7 @@ interface TextDocumentIdentifier {
 -}
 data TextDocumentIdentifier =
   TextDocumentIdentifier
-    { _uri :: Uri
+    { _textdiUri :: Uri
     } deriving (Show, Read, Eq)
 
 deriveJSON lspOptions ''TextDocumentIdentifier

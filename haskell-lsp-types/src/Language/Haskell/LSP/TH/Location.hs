@@ -37,8 +37,8 @@ interface Position {
 -}
 data Position =
   Position
-    { _line      :: Int
-    , _character :: Int
+    { _pLine      :: Int
+    , _pCharacter :: Int
     } deriving (Show, Read, Eq, Ord)
 
 deriveJSON lspOptions ''Position
@@ -66,8 +66,8 @@ interface Range {
 
 data Range =
   Range
-    { _start :: Position
-    , _end   :: Position
+    { _rStart :: Position
+    , _rEnd   :: Position
     } deriving (Show, Read, Eq, Ord)
 
 deriveJSON lspOptions ''Range
@@ -86,8 +86,8 @@ interface Location {
 
 data Location =
   Location
-    { _uri   :: Uri
-    , _range :: Range
+    { _lUri   :: Uri
+    , _lRange :: Range
     } deriving (Show, Read, Eq, Ord)
 
 deriveJSON lspOptions ''Location

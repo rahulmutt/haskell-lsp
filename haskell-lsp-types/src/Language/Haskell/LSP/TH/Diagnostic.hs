@@ -73,8 +73,8 @@ export interface DiagnosticRelatedInformation {
 
 data DiagnosticRelatedInformation =
   DiagnosticRelatedInformation
-    { _location :: Location
-    , _message  :: Text
+    { _driLocation :: Location
+    , _driMessage  :: Text
     } deriving (Show, Read, Eq, Ord)
 
 deriveJSON lspOptions ''DiagnosticRelatedInformation
@@ -127,12 +127,12 @@ interface Diagnostic {
 type DiagnosticSource = Text
 data Diagnostic =
   Diagnostic
-    { _range              :: Range
-    , _severity           :: Maybe DiagnosticSeverity
-    , _code               :: Maybe Text -- Note: Protocol allows Int too.
-    , _source             :: Maybe DiagnosticSource
-    , _message            :: Text
-    , _relatedInformation :: Maybe (List DiagnosticRelatedInformation)
+    { _dsRange              :: Range
+    , _dsSeverity           :: Maybe DiagnosticSeverity
+    , _dsCode               :: Maybe Text -- Note: Protocol allows Int too.
+    , _dsSource             :: Maybe DiagnosticSource
+    , _dsMessage            :: Text
+    , _dsRelatedInformation :: Maybe (List DiagnosticRelatedInformation)
     } deriving (Show, Read, Eq, Ord)
 
 deriveJSON lspOptions ''Diagnostic
